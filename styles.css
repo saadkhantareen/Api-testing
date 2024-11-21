@@ -1,0 +1,255 @@
+:root {
+    --primary-color: #6a11cb;
+    --secondary-color: #2575fc;
+    --background-gradient: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+    --glassmorphic-bg: rgba(255, 255, 255, 0.2);
+    --border-radius: 20px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    transition: all 0.3s ease;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: var(--background-gradient);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #333;
+}
+
+.app-container {
+    width: 100%;
+    max-width: 600px;
+    padding: 20px;
+}
+
+.glassmorphic-card {
+    background: var(--glassmorphic-bg);
+    border-radius: var(--border-radius);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.125);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+    padding: 40px;
+    animation: card-appear 0.6s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+}
+
+@keyframes card-appear {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+h1 {
+    text-align: center;
+    color: white;
+    margin-bottom: 30px;
+    font-size: 2.5rem;
+    text-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    letter-spacing: 1px;
+}
+
+.input-wrapper {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+input[type="text"] {
+    flex: 1;
+    padding: 12px 20px;
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+    color: white;
+    font-size: 16px;
+    outline: none;
+}
+
+input[type="text"]::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+input[type="text"]:focus {
+    border-color: rgba(255, 255, 255, 0.5);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+}
+
+.form-actions {
+    display: flex;
+    gap: 15px;
+}
+
+.primary-btn, .secondary-btn {
+    flex: 1;
+    padding: 12px;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.primary-btn {
+    background: linear-gradient(to right, #6a11cb, #2575fc);
+    color: white;
+}
+
+.secondary-btn {
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+}
+
+.primary-btn:hover, .secondary-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.primary-btn::before, 
+.secondary-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(120deg, transparent, rgba(255,255,255,0.3), transparent);
+    transition: all 0.6s;
+}
+
+.primary-btn:hover::before, 
+.secondary-btn:hover::before {
+    left: 100%;
+}
+
+.search-filter {
+    margin-bottom: 20px;
+}
+
+.search-filter input {
+    width: 100%;
+    padding: 10px 20px;
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    border-radius: 10px;
+    color: white;
+}
+
+.user-grid {
+    display: grid;
+    gap: 15px;
+    max-height: 300px;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255,255,255,0.3) transparent;
+}
+
+.user-grid::-webkit-scrollbar {
+    width: 6px;
+}
+
+.user-grid::-webkit-scrollbar-thumb {
+    background-color: rgba(255,255,255,0.3);
+    border-radius: 3px;
+}
+
+.user-card {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.user-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+        45deg, 
+        transparent, 
+        rgba(255,255,255,0.1), 
+        transparent
+    );
+    transform: rotate(-45deg);
+    transition: all 0.5s;
+}
+
+.user-card:hover::before {
+    top: 100%;
+    left: 100%;
+}
+
+.user-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.edit-btn, .delete-btn {
+    background: none;
+    border: none;
+    color: white;
+    padding: 8px 15px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.edit-btn {
+    background: rgba(46, 204, 113, 0.2);
+}
+
+.delete-btn {
+    background: rgba(231, 76, 60, 0.2);
+}
+
+.edit-btn:hover {
+    background: rgba(46, 204, 113, 0.4);
+}
+
+.delete-btn:hover {
+    background: rgba(231, 76, 60, 0.4);
+}
+
+.notification-area {
+    text-align: center;
+    margin-bottom: 15px;
+    opacity: 0;
+    transform: translateY(-20px);
+    transition: all 0.3s ease;
+}
+
+.notification {
+    padding: 10px;
+    border-radius: 8px;
+    color: white;
+    display: inline-block;
+}
+
+.notification.success {
+    background-color: rgba(46, 204, 113, 0.8);
+}
+
+.notification.error {
+    background-color: rgba(231, 76, 60, 0.8);
+}

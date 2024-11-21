@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic User Hub</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="app-container">
+        <div class="glassmorphic-card">
+            <h1>User Management</h1>
+            
+            <div class="notification-area" id="notification"></div>
+            
+            <form id="user-form" class="form-container">
+                <input type="hidden" id="user-id">
+                <div class="input-wrapper">
+                    <input 
+                        type="text" 
+                        id="username" 
+                        placeholder="Enter username" 
+                        required
+                        maxlength="20"
+                    >
+                    <input 
+                        type="text" 
+                        id="email" 
+                        placeholder="Enter email" 
+                        required
+                        maxlength="50"
+                    >
+                </div>
+                <div class="form-actions">
+                    <button type="submit" id="submit-button" class="primary-btn">
+                        <span>Add User</span>
+                    </button>
+                    <button type="button" id="clear-button" class="secondary-btn">
+                        <span>Clear</span>
+                    </button>
+                </div>
+            </form>
+
+            <div class="search-filter">
+                <input 
+                    type="text" 
+                    id="search-input" 
+                    placeholder="🔍 Search users..."
+                >
+            </div>
+
+            <div id="user-list" class="user-grid">
+                <!-- Users will be dynamically added here -->
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
